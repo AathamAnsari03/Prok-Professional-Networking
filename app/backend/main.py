@@ -32,6 +32,11 @@ CORS(app,
 db.init_app(app)
 jwt = JWTManager(app)
 
+# Create database tables
+with app.app_context():
+    db.create_all()
+    print("✅ Database tables created successfully!")
+
 # Register blueprints
 app.register_blueprint(auth_bp)
 app.register_blueprint(profile_bp)
