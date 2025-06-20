@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory, request, make_response
+from flask import Flask, send_from_directory, request, make_response, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from config import Config
@@ -63,6 +63,12 @@ def handle_preflight():
 def uploaded_file(filename):
     """Serve uploaded files"""
     return send_from_directory('uploads', filename)
+
+# Test endpoint
+@app.route('/api/test', methods=['GET'])
+def test_endpoint():
+    """Test endpoint to verify backend is working"""
+    return jsonify({'message': 'Backend is working!', 'status': 'success'}), 200
 
 def setup_database():
     """Setup database tables"""
