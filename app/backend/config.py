@@ -5,8 +5,13 @@ class Config:
     # Flask
     SECRET_KEY = os.environ.get('SECRET_KEY', 'dev')
     
-    # Database
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'mysql://root:Ansari%402004@localhost/prok_db?charset=utf8mb4')
+    # Database - Support both local and production
+    DATABASE_URL = os.environ.get('DATABASE_URL')
+    if DATABASE_URL and DATABASE_URL.startswith('postgres://'):
+        # Convert postgres:// to postgresql:// for newer SQLAlchemy
+        DATABASE_URL = DATABASE_URL.replace('postgres://', 'postgresql://', 1)
+    
+    SQLALCHEMY_DATABASE_URI = DATABASE_URL or 'mysql://root:Ansari%402004@localhost/prok_db?charset=utf8mb4'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     # JWT
