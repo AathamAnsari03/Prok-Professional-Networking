@@ -21,9 +21,9 @@ Ensure Day 15 (Final Integration) is complete and all modules are working togeth
 1.  **Create and Switch to a New Branch**
 
     ```bash
-    # First, ensure you are on your 'main' branch and it's up-to-date
-    git checkout main
-    git pull origin main
+    # First, ensure you are on your 'master' branch and it's up-to-date
+    git checkout master
+    git pull origin master
 
     # Create and switch to a new branch for this day's assignment
     git checkout -b day-16-final-deployment
@@ -138,7 +138,7 @@ Ensure Day 15 (Final Integration) is complete and all modules are working togeth
     git commit -m "Day 16: Deploy complete application to production"
     ```
 
-2.  **Push Your Changes to Your Fork**
+2.  **Push Your Changes to Your Repository**
 
     ```bash
     git push -u origin day-16-final-deployment
@@ -147,13 +147,11 @@ Ensure Day 15 (Final Integration) is complete and all modules are working togeth
 3.  **Merge After Completion**
 
     ```bash
-    git checkout main
-    git pull origin main
+    git checkout master
+    git pull origin master
     git merge day-16-final-deployment
-    git push origin main
+    git push origin master
     ```
-
-
 
 ## ✅ Deliverable
 
@@ -165,4 +163,3 @@ A production-ready application with:
 - Performance optimization.
 - Comprehensive documentation.
 - All tests passing.
-

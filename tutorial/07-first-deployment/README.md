@@ -24,9 +24,9 @@ Ensure your **Day 6 Posts Listing** is complete and tested. You should have acco
 > **IMPORTANT:** Always create a new branch for each distinct piece of work.
 
 ```bash
-# First, ensure you are on your 'main' branch and it's up-to-date
-git checkout main
-git pull origin main  # Get any potential updates from your own fork's main
+# First, ensure you are on your 'master' branch and it's up-to-date
+git checkout master
+git pull origin master  # Get any potential updates from your own repository's master
 
 # Now, create and switch to a new branch for this day's assignment/feature
 git checkout -b day-7-deployment
@@ -94,7 +94,7 @@ git add .
 git commit -m "Day 7: Deploy milestone 1 to production"
 ```
 
-### Push Your Changes to Your Fork
+### Push Your Changes to Your Repository
 
 ```bash
 git push -u origin day-7-deployment
@@ -103,12 +103,11 @@ git push -u origin day-7-deployment
 ### Merge After Completion
 
 ```bash
-git checkout main
-git pull origin main
+git checkout master
+git pull origin master
 git merge day-7-deployment
-git push origin main
+git push origin master
 ```
-
 
 ## Overview
 
@@ -123,4 +122,3 @@ A fully deployed application with:
 - Proper **configuration and security** measures
 - All **tests passing** in production
 - Clean, **documented deployment steps**
-

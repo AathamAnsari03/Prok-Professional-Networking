@@ -6,12 +6,12 @@ Implement the authentication backend using Flask, and integrate it with the fron
 
 ## 📚 Learning Outcomes
 
-- Implement user authentication in Flask  
-- Set up JWT token-based authentication  
-- Create secure password hashing  
-- Implement user registration and login endpoints  
-- Connect frontend authentication UI with backend  
-- Handle authentication errors and responses  
+- Implement user authentication in Flask
+- Set up JWT token-based authentication
+- Create secure password hashing
+- Implement user registration and login endpoints
+- Connect frontend authentication UI with backend
+- Handle authentication errors and responses
 
 ## 🚀 Getting Started
 
@@ -21,18 +21,18 @@ Ensure your Day 1 setup is complete and all dependencies are installed. You shou
 
 ### Create and Switch to a New Branch
 
-> **IMPORTANT:** Never work directly on the main branch! Always create a new branch for each assignment or distinct piece of work.
+> **IMPORTANT:** Never work directly on the master branch! Always create a new branch for each assignment or distinct piece of work.
 
 ```bash
-# First, ensure you are on your 'main' branch and it's up-to-date
-git checkout main
-git pull origin main
+# First, ensure you are on your 'master' branch and it's up-to-date
+git checkout master
+git pull origin master
 
 # Now, create and switch to a new branch for this assignment
 git checkout -b day-2-authentication
 ```
 
-> **What's happening?** You're creating an isolated branch to implement your authentication logic without modifying the main branch prematurely.
+> **What's happening?** You're creating an isolated branch to implement your authentication logic without modifying the master branch prematurely.
 
 ### Set Up Development Environment
 
@@ -64,8 +64,7 @@ npm install
 
 #### Database Setup and User Model
 
-
-## Prerequisites 
+## Prerequisites
 
 ### 1. **Download MySQL Server**
 
@@ -84,7 +83,7 @@ npm install
 ### 3. **Start MySQL Server**
 
 - On Windows: Use the MySQL Notifier or Services app.
-- On macOS/Linux: Use your system’s service manager, e.g.:
+- On macOS/Linux: Use your system's service manager, e.g.:
   ```bash
   sudo service mysql start
   ```
@@ -97,13 +96,12 @@ npm install
 
 ---
 
-**You’re ready to use MySQL for your project!**
+**You're ready to use MySQL for your project!**
 
 ---
 
 - Create a `User` model with fields: `id`, `username`, `email`, and `password_hash`.
 - Use `generate_password_hash` and `check_password_hash` from `werkzeug.security`.
-
 
 ## ⚙️ Database Configuration
 
@@ -124,7 +122,7 @@ By default, the backend connects to MySQL using the credentials in `app/backend/
 
 ---
 
-```bash
+````bash
   cd app/backend
   # To create Database in MySQL
   mysql -u root -p
@@ -161,10 +159,9 @@ By default, the backend connects to MySQL using the credentials in `app/backend/
   # To run backend
   flask run
   # The backend API will be available at: http://localhost:5000
-  ```
+````
 
-
-Certainly! Here’s a **Postman API Testing Guide** in README format, ready to copy-paste into your documentation:
+Certainly! Here's a **Postman API Testing Guide** in README format, ready to copy-paste into your documentation:
 
 ---
 
@@ -176,7 +173,7 @@ This guide will help you test your API endpoints using [Postman](https://www.pos
 
 ### 1. **Open Postman**
 
-- Download and install Postman if you don’t have it: [Download Postman](https://www.postman.com/downloads/)
+- Download and install Postman if you don't have it: [Download Postman](https://www.postman.com/downloads/)
 
 ---
 
@@ -221,13 +218,13 @@ This guide will help you test your API endpoints using [Postman](https://www.pos
 ### 6. **Check the Response**
 
 - View the response status and message in the lower section of Postman.
-  - Example success:  
+  - Example success:
     ```json
     {
       "message": "User created successfully"
     }
     ```
-  - Example error:  
+  - Example error:
     ```json
     {
       "message": "Username or email already exists"
@@ -253,7 +250,7 @@ This guide will help you test your API endpoints using [Postman](https://www.pos
 
 ---
 
-**You’re now ready to test any API endpoint with Postman!**
+**You're now ready to test any API endpoint with Postman!**
 
 ---
 
@@ -276,7 +273,7 @@ This guide will help you test your API endpoints using [Postman](https://www.pos
 - Attach token to protected API requests
 
 ```js
-localStorage.setItem("token", token)
+localStorage.setItem("token", token);
 ```
 
 ### Security Features
@@ -300,7 +297,7 @@ npm run dev
 
 Application available at:
 
-- Frontend: [http://localhost:3000](http://localhost:3000)  
+- Frontend: [http://localhost:3000](http://localhost:3000)
 - Backend API: [http://localhost:5000](http://localhost:5000)
 
 ### Testing
@@ -325,21 +322,21 @@ git commit -m "Day 2: Implement authentication backend and frontend integration"
 
 > Use clear commit messages that explain the key changes you've made.
 
-2. **Push Your Changes to Your Fork**
+2. **Push Your Changes to Your Repository**
 
 ```bash
-git push -u origin day-2-authentication
+git push -u origin day-2-authentication-backend
 ```
 
-> Uploads your branch to your forked repo.
+> Uploads your branch to your repository.
 
 3. **Merge After Assignment Completion**
 
 ```bash
-git checkout main
-git pull origin main
-git merge day-2-authentication
-git push origin main
+git checkout master
+git pull origin master
+git merge day-2-authentication-backend
+git push origin master
 ```
 
 > Merge your work only once it's been tested and finalized.
@@ -350,8 +347,7 @@ git push origin main
 
 A fully functional authentication system:
 
-- Secure user auth with JWT in Flask backend  
-- Integrated frontend login with proper token handling  
-- Error messaging and form feedback  
+- Secure user auth with JWT in Flask backend
+- Integrated frontend login with proper token handling
+- Error messaging and form feedback
 - All tests passing and code documented
-

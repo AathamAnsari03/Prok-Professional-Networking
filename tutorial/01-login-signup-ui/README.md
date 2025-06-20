@@ -21,20 +21,19 @@ Set up the development environment and create the initial project structure for 
 
 **Create and Switch to a New Branch**
 
-> **IMPORTANT:** Never work directly on the main branch! Always create a new branch for each assignment or distinct piece of work.
+> **IMPORTANT:** Never work directly on the master branch! Always create a new branch for each assignment or distinct piece of work.
 
 ```bash
-# First, ensure you are on your 'main' branch and it's up-to-date
-git checkout main
-git pull origin main  # Get any potential updates from your own fork's main
+# First, ensure you are on your 'master' branch and it's up-to-date
+git checkout master
+git pull origin master  # Get any potential updates from your own repository's master
 
 # Now, create and switch to a new branch for your assignment/feature
 # Choose a descriptive name, e.g., 'assignment-1-login-form' or 'feature-user-profile'
 git checkout -b your-assignment-branch-name
 ```
 
-> **What's happening?** You're creating an independent line of development. The main branch in your fork should ideally remain a clean copy of the original template. Your new branch is where you'll make all your assignment-specific changes.
-
+> **What's happening?** You're creating an independent line of development. The master branch in your repository should ideally remain a clean copy of the original template. Your new branch is where you'll make all your assignment-specific changes.
 
 2.**Install Dependencies**
 
@@ -85,7 +84,7 @@ _ **Validation:** Basic client-side validation to ensure required fields are not
   - Frontend: http://localhost:3000
   - Backend API: http://localhost:5000
 
- 5.**Testing**
+    5.**Testing**
 
   - Test form validation
   - Test responsive design
@@ -114,28 +113,28 @@ git commit -m "Assignment X: Brief description of changes"
 - `git add .`: Moves your modified or new files into the staging area (a waiting room for your changes)
 - `git commit -m "Your message"`: Takes a snapshot of the changes in your staging area and saves them permanently in your branch's history
 
-  2.**Push Your Changes to Your Fork**
+  2.**Push Your Changes to Your Repository**
 
 Once you're ready to save your work online or submit your assignment:
 
 ```bash
-# Push your branch to YOUR remote fork
+# Push your branch to YOUR remote repository
 # The first time you push a new branch, use '-u' to link your local branch
 # to its remote counterpart. For subsequent pushes, 'git push' is often enough
 git push -u origin your-assignment-branch-name
 ```
 
-> **Note:** This uploads your local branch to your origin (your personal fork)
+> **Note:** This uploads your local branch to your origin (your personal repository)
 
 3.**Merge After Assignment Completion**
 
 After your assignment is complete and submitted:
 
 ```bash
-git checkout main           # Switch to your local main
-git pull origin main        # Ensure your local main is up-to-date with your remote main
-git merge assignment-1-feature # Merge the feature branch into your main
-git push origin main        # Push the updated main to your fork online
+git checkout master           # Switch to your local master
+git pull origin master        # Ensure your local master is up-to-date with your remote master
+git merge assignment-1-feature # Merge the feature branch into your master
+git push origin master        # Push the updated master to your repository online
 ```
 
 ## Preview
@@ -152,4 +151,3 @@ git push origin main        # Push the updated main to your fork online
 A working project setup with login/signup UI, properly version controlled with Git.
 
 ---
-
