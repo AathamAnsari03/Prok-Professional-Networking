@@ -1,13 +1,11 @@
-from .user import User
-from .profile import Profile
-from .post import Post
-from .job import Job
-from .message import Message
+from flask_sqlalchemy import SQLAlchemy
 
-__all__ = [
-    'User',
-    'Profile',
-    'Post',
-    'Job',
-    'Message'
-] 
+# Create a single database instance
+db = SQLAlchemy()
+
+# Import all models to ensure they are registered
+from .user import User
+from .profile import Profile, Skill, Experience, Education, profile_skills
+from .post import Post, PostMedia
+
+__all__ = ['db', 'User', 'Profile', 'Skill', 'Experience', 'Education', 'profile_skills', 'Post', 'PostMedia'] 

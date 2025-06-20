@@ -46,7 +46,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 #### Install Backend Dependencies
 
 ```bash
-pip install Flask-SQLAlchemy Flask-Migrate Werkzeug PyJWT Flask-JWT-Extended Flask-CORS
+pip install Flask-SQLAlchemy Flask-Migrate Werkzeug PyJWT Flask-JWT-Extended Flask-CORS Flask-Limiter email-validator
 ```
 
 > These libraries will help manage your database, secure passwords, and enable token-based authentication with cross-origin support.
@@ -64,14 +64,74 @@ npm install
 
 #### Database Setup and User Model
 
+
+## Prerequisites 
+
+### 1. **Download MySQL Server**
+
+- Go to the [MySQL Community Downloads page](https://dev.mysql.com/downloads/mysql/).
+- Choose your operating system (Windows, macOS, Linux).
+- Download and run the installer.
+- Follow the setup instructions to install MySQL Server.
+- Remember your MySQL **root password** during setup!
+
+### 2. **Download MySQL Workbench**
+
+- Go to the [MySQL Workbench Downloads page](https://dev.mysql.com/downloads/workbench/).
+- Choose your operating system.
+- Download and install MySQL Workbench.
+
+### 3. **Start MySQL Server**
+
+- On Windows: Use the MySQL Notifier or Services app.
+- On macOS/Linux: Use your system’s service manager, e.g.:
+  ```bash
+  sudo service mysql start
+  ```
+
+### 4. **Open MySQL Workbench**
+
+- Launch MySQL Workbench.
+- Create a new connection using your MySQL username and password.
+- Connect and start managing your databases!
+
+---
+
+**You’re ready to use MySQL for your project!**
+
+---
+
 - Create a `User` model with fields: `id`, `username`, `email`, and `password_hash`.
 - Use `generate_password_hash` and `check_password_hash` from `werkzeug.security`.
 
+
+## ⚙️ Database Configuration
+
+By default, the backend connects to MySQL using the credentials in `app/backend/config.py`.
+
+### 🔄 How to Change MySQL Username and Password
+
+1. Open `app/backend/config.py` in your code editor.
+2. Find the line that sets `SQLALCHEMY_DATABASE_URI`:
+   ```python
+   SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'mysql://root:yourpassword@localhost/prok_db')
+   ```
+3. Replace `root` and `yourpassword` with your MySQL username and password:
+   ```python
+   SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'mysql://admin:MyPass123@localhost/prok_db')
+   ```
+4. Save the file.
+
+---
+
 ```bash
-flask db init
-flask db migrate -m "Initial migration: Create User table"
-flask db upgrade
-```
+  cd app/backend
+  # To create Database in MySQL
+  mysql -u root -p
+  # Enter your password, then in the MySQL shell:
+  CREATE DATABASE prok_db;
+  USE prok_db;
+  exit
 
 #### Registration Endpoint (POST `/api/signup`)
 
@@ -96,6 +156,106 @@ flask db upgrade
 - **Responses:**
   - `200 OK` – success with token
   - `401 Unauthorized` – incorrect credentials
+
+```bash
+  # To run backend
+  flask run
+  # The backend API will be available at: http://localhost:5000
+  ```
+
+
+Certainly! Here’s a **Postman API Testing Guide** in README format, ready to copy-paste into your documentation:
+
+---
+
+## 🚦 API Testing with Postman
+
+This guide will help you test your API endpoints using [Postman](https://www.postman.com/).
+
+---
+
+### 1. **Open Postman**
+
+- Download and install Postman if you don’t have it: [Download Postman](https://www.postman.com/downloads/)
+
+---
+
+### 2. **Create a New Request**
+
+- Click **"New"** → **"HTTP Request"**.
+
+---
+
+### 3. **Set Request Type and URL**
+
+- Select the HTTP method (e.g., **POST**, **GET**).
+- Enter your API endpoint URL, for example:
+  ```
+  http://localhost:5000/api/signup
+  ```
+
+---
+
+### 4. **Set the Request Body**
+
+- Click the **"Body"** tab.
+- Select **"raw"**.
+- Choose **"JSON"** from the dropdown menu.
+- Enter your JSON data. For example, to register a user:
+  ```json
+  {
+    "username": "testuser",
+    "email": "testuser@example.com",
+    "password": "TestPassword123"
+  }
+  ```
+
+---
+
+### 5. **Send the Request**
+
+- Click the **"Send"** button.
+
+---
+
+### 6. **Check the Response**
+
+- View the response status and message in the lower section of Postman.
+  - Example success:  
+    ```json
+    {
+      "message": "User created successfully"
+    }
+    ```
+  - Example error:  
+    ```json
+    {
+      "message": "Username or email already exists"
+    }
+    ```
+
+---
+
+### 7. **Test the Login Endpoint**
+
+- Change the URL to:
+  ```
+  http://localhost:5000/api/login
+  ```
+- Use this JSON body:
+  ```json
+  {
+    "username": "testuser",
+    "password": "TestPassword123"
+  }
+  ```
+- Click **"Send"** and check for a token in the response.
+
+---
+
+**You’re now ready to test any API endpoint with Postman!**
+
+---
 
 ### Frontend Integration
 

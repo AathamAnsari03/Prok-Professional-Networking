@@ -23,3 +23,140 @@
     @apply px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
   }
 }
+
+/* Rich Text Editor Styles */
+@layer utilities {
+  .ProseMirror {
+    @apply outline-none min-h-[120px] p-4;
+  }
+  
+  .ProseMirror p.is-editor-empty:first-child::before {
+    @apply text-gray-400 float-left h-0 pointer-events-none;
+    content: attr(data-placeholder);
+  }
+  
+  .ProseMirror p {
+    @apply mb-2;
+  }
+  
+  .ProseMirror p:last-child {
+    @apply mb-0;
+  }
+  
+  .ProseMirror h1,
+  .ProseMirror h2,
+  .ProseMirror h3,
+  .ProseMirror h4,
+  .ProseMirror h5,
+  .ProseMirror h6 {
+    @apply font-bold mb-2;
+  }
+  
+  .ProseMirror h1 { @apply text-2xl; }
+  .ProseMirror h2 { @apply text-xl; }
+  .ProseMirror h3 { @apply text-lg; }
+  
+  .ProseMirror ul,
+  .ProseMirror ol {
+    @apply pl-6 mb-2;
+  }
+  
+  .ProseMirror li {
+    @apply mb-1;
+  }
+  
+  .ProseMirror ul {
+    @apply list-disc;
+  }
+  
+  .ProseMirror ol {
+    @apply list-decimal;
+  }
+  
+  .ProseMirror blockquote {
+    @apply border-l-4 border-gray-300 pl-4 italic text-gray-600 mb-2;
+  }
+  
+  .ProseMirror code {
+    @apply bg-gray-100 px-1 py-0.5 rounded text-sm font-mono;
+  }
+  
+  .ProseMirror pre {
+    @apply bg-gray-100 p-3 rounded mb-2 overflow-x-auto;
+  }
+  
+  .ProseMirror pre code {
+    @apply bg-transparent p-0;
+  }
+  
+  .ProseMirror a {
+    @apply text-blue-600 hover:text-blue-800 underline;
+  }
+  
+  .ProseMirror img {
+    @apply max-w-full h-auto rounded;
+  }
+  
+  .ProseMirror strong {
+    @apply font-bold;
+  }
+  
+  .ProseMirror em {
+    @apply italic;
+  }
+  
+  .ProseMirror mark {
+    @apply bg-yellow-200;
+  }
+  
+  .ProseMirror hr {
+    @apply border-gray-300 my-4;
+  }
+}
+
+/* Prose content styles for post display */
+.prose {
+  @apply text-gray-900;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply font-bold text-gray-900 mb-2;
+}
+
+.prose p {
+  @apply mb-3 leading-relaxed;
+}
+
+.prose ul,
+.prose ol {
+  @apply mb-3 pl-6;
+}
+
+.prose li {
+  @apply mb-1;
+}
+
+.prose a {
+  @apply text-blue-600 hover:text-blue-800 underline;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-gray-300 pl-4 italic text-gray-600 mb-3;
+}
+
+.prose code {
+  @apply bg-gray-100 px-1 py-0.5 rounded text-sm font-mono;
+}
+
+.prose pre {
+  @apply bg-gray-100 p-3 rounded mb-3 overflow-x-auto;
+}
+
+.prose img {
+  @apply max-w-full h-auto rounded;
+}
