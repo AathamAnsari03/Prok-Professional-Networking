@@ -1,5 +1,4 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from config import Config
 from dotenv import load_dotenv
@@ -7,9 +6,12 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
-# Import models
-from models.user import User, db as user_db
-from models.profile import Profile, Skill, Experience, Education, db as profile_db
+# Import models and db
+from models.user import User, db
+from models.profile import Profile, Skill, Experience, Education
+
+# Import blueprints
+from api.auth import auth_bp
 
 # Create Flask app
 app = Flask(__name__)
@@ -17,9 +19,11 @@ app.config.from_object(Config)
 
 # Initialize extensions
 CORS(app)
+db.init_app(app)
 
-# Initialize database
-db = SQLAlchemy(app)
+# Register blueprints
+app.register_blueprint(auth_bp)
+
 
 def setup_database():
     """Setup database tables"""
