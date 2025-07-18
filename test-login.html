@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Backend API Test</h1>
+    
+    <div>
+        <h3>Test Login</h3>
+        <button onclick="testLogin()">Test Login (tharun/Tharun@1)</button>
+        <div id="loginResult"></div>
+    </div>
+    
+    <div>
+        <h3>Test Signup</h3>
+        <button onclick="testSignup()">Test Signup</button>
+        <div id="signupResult"></div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:5000';
+        
+        async function testLogin() {
+            const resultDiv = document.getElementById('loginResult');
+            resultDiv.innerHTML = 'Testing login...';
+            
+            try {
+                const response = await fetch(`${API_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        identifier: 'tharun',
+                        password: 'Tharun@1'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.success) {
+                    resultDiv.innerHTML = `<div class="result success">
+                        ✅ Login successful!<br>
+                        User: ${data.user.username}<br>
+                        Email: ${data.user.email}<br>
+                        Token: ${data.token}
+                    </div>`;
+                } else {
+                    resultDiv.innerHTML = `<div class="result error">
+                        ❌ Login failed: ${data.message || 'Unknown error'}
+                    </div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result error">
+                    ❌ Network error: ${error.message}
+                </div>`;
+            }
+        }
+        
+        async function testSignup() {
+            const resultDiv = document.getElementById('signupResult');
+            resultDiv.innerHTML = 'Testing signup...';
+            
+            try {
+                const response = await fetch(`${API_URL}/auth/signup`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: 'testuser2',
+                        email: 'test2@example.com',
+                        password: 'TestPass123'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.success) {
+                    resultDiv.innerHTML = `<div class="result success">
+                        ✅ Signup successful!<br>
+                        User: ${data.user.username}<br>
+                        Email: ${data.user.email}<br>
+                        Token: ${data.token}
+                    </div>`;
+                } else {
+                    resultDiv.innerHTML = `<div class="result error">
+                        ❌ Signup failed: ${data.message || 'Unknown error'}
+                    </div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result error">
+                    ❌ Network error: ${error.message}
+                </div>`;
+            }
+        }
+    </script>
+</body>
+</html> 

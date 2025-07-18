@@ -8,11 +8,17 @@ export interface User {
 export interface Profile {
   id: number;
   user_id: number;
+  avatar: string;
+  banner: string;
+  name: string;
+  title: string;
   bio: string;
   location: string;
+  address: string;
   skills: string[];
-  experience: Experience[];
-  education: Education[];
+  socials: Record<string, string>;
+  experiences: any[];
+  education: any[];
 }
 
 export interface Experience {
@@ -37,7 +43,16 @@ export interface Post {
   id: number;
   user_id: number;
   content: string;
+  media_url?: string;
+  media_type?: string;
+  category?: string;
+  tags?: string[];
+  visibility?: string;
+  likes_count?: number;
+  views_count?: number;
+  comments_count?: number;
   created_at: string;
+  updated_at?: string;
   likes: number;
   comments: Comment[];
 }

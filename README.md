@@ -238,3 +238,63 @@ You'll know you've successfully completed this tutorial when you can:
 ---
 
 > 💡 **Remember:** This is a learning-focused project. Take your time to understand each concept before moving to the next module.
+
+# Full-Stack Developer Portfolio
+
+A modern, production-ready portfolio with React, TailwindCSS, Flask, and MongoDB.
+
+## Features
+- Responsive dark/light UI with glassmorphism and neon accents
+- JWT authentication, profile editing, image upload, PDF resume, skill endorsement, activity log
+
+## Setup
+
+### Backend
+```
+cd server
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+cp ../.env .env
+python app.py
+```
+
+### Frontend
+```
+cd client
+npm install
+npm start
+```
+
+## Troubleshooting: 'failed to fetch' Error in Frontend
+
+If you see a 'failed to fetch' error in the frontend, check the following:
+
+1. **Backend is running:**
+   - Start the backend with `python app/backend/main.py` (or your preferred method).
+   - Default port is 5000 unless changed.
+2. **CORS is enabled:**
+   - The backend already enables CORS globally in `main.py`.
+3. **API URL matches backend:**
+   - The frontend should use `http://localhost:5000` as the base URL.
+   - Endpoints are like `/auth/login`, `/auth/signup`, `/profile`, etc.
+4. **Check backend logs:**
+   - Look for errors in the backend terminal when making requests from the frontend.
+5. **Check browser console:**
+   - Look for CORS or network errors in the browser's developer tools.
+
+If you still have issues, double-check the route prefixes and ports in both frontend and backend configs.
+
+## Troubleshooting "Failed to fetch" Login/API Errors
+
+1. Backend server is running on http://localhost:5000
+2. Frontend is calling the correct API URL (http://localhost:5000/api/login)
+3. CORS is enabled in Flask (see main.py for CORS setup)
+4. No HTTP/HTTPS mismatch (both should use HTTP in dev)
+5. No firewall or port conflict
+
+### Production Tips
+- Use HTTPS for both frontend and backend
+- Restrict CORS origins to your real frontend domain
+- Store API URLs and secrets in environment variables
+- Never use CORS(app, supports_credentials=True) with origins="*" in production
