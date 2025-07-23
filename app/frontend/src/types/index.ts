@@ -1,13 +1,14 @@
 export interface User {
   id: number;
+  username: string;
   email: string;
-  name: string;
   created_at: string;
 }
 
 export interface Profile {
   id: number;
   user_id: number;
+  full_name: string;
   bio: string;
   location: string;
   skills: string[];

@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom color palette */
+@layer base {
+  :root {
+    --color-brown-50: #fdf8f6;
+    --color-brown-100: #f2e8e5;
+    --color-brown-200: #eaddd7;
+    --color-brown-300: #e0cec7;
+    --color-brown-400: #d2bab0;
+    --color-brown-500: #bfa094;
+    --color-brown-600: #a18072;
+    --color-brown-700: #8b4513;
+    --color-brown-800: #6d3410;
+    --color-brown-900: #5d2e0e;
+  }
+}
+
 /* Custom styles can be added below */
 @layer base {
   body {
@@ -21,5 +37,22 @@
   }
   .input {
     @apply px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }

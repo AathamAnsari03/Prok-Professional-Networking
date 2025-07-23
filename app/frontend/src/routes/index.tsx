@@ -8,6 +8,8 @@ import PostList from '../components/posts/PostList';
 import Feed from '../components/feed/Feed';
 import JobList from '../components/job-board/JobList';
 import MessageList from '../components/messaging/MessageList';
+import Dashboard from '../components/dashboard/Dashboard';
+import ThreeDemo from '../components/ThreeDemo';
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +23,10 @@ export const router = createBrowserRouter([
   {
     path: '/signup',
     element: <Signup />,
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard />,
   },
   {
     path: '/profile',
@@ -45,5 +51,9 @@ export const router = createBrowserRouter([
   {
     path: '/messages',
     element: <MessageList />,
+  },
+  {
+    path: '/three-demo',
+    element: <ThreeDemo />,
   },
 ]); 
